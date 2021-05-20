@@ -2,19 +2,21 @@ package restassured;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 
 import org.json.simple.JSONObject;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-
-
-
+import io.restassured.internal.ResponseSpecificationImpl.HamcrestAssertionClosure;
+import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import io.restassured.http.ContentType;
 
 
 import static io.restassured.RestAssured.*;
+import static org.testng.Assert.assertEquals;
 
 public class add_occupant {
 
@@ -43,11 +45,17 @@ public class add_occupant {
 		paylaod.put("occupentProfileRequests", occupantProfileList);
 		System.out.println(paylaod);
 
-		given().when().header("Authorization", tokensg)
+		Response response = given().when().header("Authorization", tokensg)
 		.contentType(ContentType.JSON)
 		.body(paylaod)
 		.post(URLstaging)
-		.then()
-		.log().all().statusCode(200);			
+		.then().statusCode(400).log().body().extract().response();	
+		
+		JsonPath jsonPath = response.jsonPath();
+		HashMap<String, String> errorArrayList = jsonPath.get("responseData");
+		
+		for(String m: errorArrayList.values()) {
+			System.out.println(m);	
+		}
 	}
 }

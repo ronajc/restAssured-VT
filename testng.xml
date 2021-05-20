@@ -4,7 +4,7 @@
   <test name = "add_occupant testcase">
   <parameter name="name" value="kakashi"></parameter>
     <classes>
-      <class name="restassured.add_occupant"/>
+      <class name="senseTouch.loginWithPassword"></class>
     </classes>
   </test> <!-- Default test --> 
 </suite> <!-- Default suite -->

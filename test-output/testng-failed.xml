@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="restassured.get_feeds">
+      <class name="senseTouch.loginWithPassword">
         <methods>
-          <include name="test2"/>
+          <include name="verifyFeatureList"/>
         </methods>
-      </class> <!-- restassured.get_feeds -->
+      </class> <!-- senseTouch.loginWithPassword -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
